@@ -15,12 +15,12 @@
       </section>
     </v-card-text>
     <v-card-actions>
-      <v-btn @click="deleltedTask()" color="error">
+      <v-btn color="error">
         <span>削除</span>
         <v-icon>mdi-delete</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
-      <v-btn @click="updateTask()" color="primary">
+      <v-btn color="primary">
         <span>登録</span>
         <v-icon>mdi-send</v-icon>
       </v-btn>
@@ -59,40 +59,6 @@ export default {
       axios(requestConfig)
         .then((res) => {
           this.task = res.data;
-        })
-        .catch(() => {
-          alert("エラー");
-        });
-    },
-    deleltedTask() {
-      const requestConfig = {
-        url: "http://localhost:8001/api/task",
-        method: "DELETE",
-        data: {
-          id: this.$route.query.taskId,
-        },
-      };
-      axios(requestConfig)
-        .then(() => {
-          alert("成功");
-        })
-        .catch(() => {
-          alert("エラー");
-        });
-    },
-    updateTask() {
-      const requestConfig = {
-        url: "http://localhost:8001/api/task",
-        method: "PUT",
-        data: {
-          id: this.task.task_id,
-          name: this.task.task_name,
-          detail: this.task.task_detail,
-        },
-      };
-      axios(requestConfig)
-        .then(() => {
-          alert("成功");
         })
         .catch(() => {
           alert("エラー");

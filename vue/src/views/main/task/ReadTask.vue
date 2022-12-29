@@ -24,7 +24,6 @@
   </v-card>
 </template>
 <script>
-import axios from "axios";
 export default {
   data() {
     return {
@@ -37,26 +36,8 @@ export default {
     };
   },
   methods: {
-    getTask() {
-      const requestConfig = {
-        url: "http://localhost:8001/api/task",
-        method: "GET",
-        params: {
-          id: this.$route.query.taskId,
-        },
-      };
-      axios(requestConfig)
-        .then((res) => {
-          console.log(res);
-          this.task = res.data;
-        })
-        .catch(() => {
-          alert("エラー");
-        });
-    },
   },
   mounted() {
-    this.getTask();
   },
 };
 </script>

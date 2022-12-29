@@ -18,7 +18,7 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="primary" @click="createTask()">
+      <v-btn color="primary">
         <span>登録</span>
         <v-icon>mdi-send</v-icon>
       </v-btn>
@@ -26,7 +26,6 @@
   </v-card>
 </template>
 <script>
-import axios from "axios";
 export default {
   data() {
     return {
@@ -40,23 +39,6 @@ export default {
     },
     onCreateDetail(userDetail) {
       this.newTaskDetail = userDetail;
-    },
-    createTask() {
-      const requestConfig = {
-        url: "http://localhost:8001/api/task",
-        method: "POST",
-        data: {
-          name: this.newTaskName,
-          detail: this.newTaskDetail,
-        },
-      };
-      axios(requestConfig)
-        .then(() => {
-          alert("成功");
-        })
-        .catch(() => {
-          alert("エラー");
-        });
     },
   },
 };

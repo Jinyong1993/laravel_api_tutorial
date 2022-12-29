@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   data() {
     return {
@@ -51,22 +50,8 @@ export default {
     };
   },
   methods: {
-    getTasks() {
-      const requestConfig = {
-        url: "http://localhost:8001/api/tasks",
-        method: "GET",
-      };
-      axios(requestConfig)
-        .then((res) => {
-          this.tasks = res.data;
-        })
-        .catch(() => {
-          alert("エラー");
-        });
-    },
   },
   mounted() {
-    this.getTasks();
   },
 };
 </script>
